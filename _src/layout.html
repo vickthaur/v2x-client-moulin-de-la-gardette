@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="{{langue}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,12 +8,14 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#151011">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale" content="{{og_locale}}">
+  <meta property="og:locale:alternate" content="{{og_locale_autre}}">
   <meta property="og:site_name" content="Moulin de la Gardette">
   <meta property="og:title" content="{{titre}}">
   <meta property="og:description" content="{{description}}">
   <meta property="og:image" content="https://v2x-client-moulin-de-la-gardette.vercel.app/assets/img/partage.jpg">
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  {{hreflang}}
   <link rel="preload" href="/assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   {{preload}}
@@ -32,66 +34,70 @@
     }
   </script>
   {{jsonld}}
-  <script type="speculationrules">{"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"href_matches": "/mentions-legales"}}]}, "eagerness": "moderate"}]}</script>
+  <script type="speculationrules">{"prerender": [{"where": {"and": [{"href_matches": "/*"}, {"not": {"href_matches": "{{u_mentions}}"}}]}, "eagerness": "moderate"}]}</script>
 </head>
 <body class="{{classe}}">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="crete-ligne" viewBox="0 0 1600 200"><path d="{{crete_d}}" pathLength="1" vector-effect="non-scaling-stroke"/></symbol>
     <symbol id="crete-plein" viewBox="0 0 1600 200"><path d="{{crete_d}} L1600 200 L0 200 Z"/></symbol>
+    {{drapeau}}
   </svg>
-  <a class="saut" href="#contenu">Aller au contenu</a>
+  <a class="saut" href="#contenu">{{t_saut}}</a>
 
-  <!-- Âge légal : demandé une seule fois -->
+  <!-- Âge légal : demandé une seule fois (la même réponse vaut pour les deux langues) -->
   <div class="age" id="age" hidden role="dialog" aria-modal="true" aria-labelledby="age-t">
     <div class="age-in">
       <p class="k">Moulin de la Gardette · Gigondas</p>
       {{crete_ligne}}
-      <p class="age-t" id="age-t">Avez-vous l’âge légal pour consommer de l’alcool&nbsp;?</p>
-      <div class="age-choix"><button class="btn btn--or" type="button" data-age="oui">Oui, j’ai plus de 18 ans</button><button class="btn btn--trait" type="button" data-age="non">Non</button></div>
-      <p class="age-non" hidden>Ce site présente des vins&nbsp;: il est réservé aux personnes majeures. À bientôt.</p>
-      <p class="age-loi">L’abus d’alcool est dangereux pour la santé, à consommer avec modération.</p>
+      <p class="age-t" id="age-t">{{t_age_t}}</p>
+      <div class="age-choix"><button class="btn btn--or" type="button" data-age="oui">{{t_age_oui}}</button><button class="btn btn--trait" type="button" data-age="non">{{t_age_non}}</button></div>
+      <p class="age-non" hidden>{{t_age_refus}}</p>
+      <p class="age-loi">{{t_age_loi}}</p>
     </div>
   </div>
 
   <header class="top{{tete_classe}}" id="top">
-    <nav class="nav nav--g" aria-label="Navigation principale">
+    <nav class="nav nav--g" aria-label="{{t_nav}}">
       <div class="deroule">
-        <a href="/domaine"{{actif_domaine}}>Le domaine<svg class="chevron" width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+        <a href="{{u_domaine}}"{{actif_domaine}}>{{t_domaine}}<svg class="chevron" width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
         <div class="sous">
-          <a href="/domaine#colline">La colline de la Gardette</a><a href="/domaine#vignoble">Le vignoble</a><a href="/domaine#vendanges">Les vendanges</a><a href="/domaine#cave">La cave</a><a href="/domaine#annee">L’année au domaine</a><a href="/domaine#releve">La relève</a>
+          <a href="{{u_domaine}}#{{a_colline}}">{{t_colline}}</a><a href="{{u_domaine}}#{{a_vignoble}}">{{t_vignoble}}</a><a href="{{u_domaine}}#{{a_vendanges}}">{{t_vendanges}}</a><a href="{{u_domaine}}#{{a_cave}}">{{t_cave}}</a><a href="{{u_domaine}}#{{a_annee}}">{{t_annee}}</a><a href="{{u_domaine}}#{{a_releve}}">{{t_releve}}</a>
         </div>
       </div>
       <div class="deroule">
-        <a href="/vins"{{actif_vins}}>Les vins<svg class="chevron" width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+        <a href="{{u_vins}}"{{actif_vins}}>{{t_vins}}<svg class="chevron" width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
         <div class="sous sous--vins">
-          <div class="sous-bouteilles"><a class="mv" href="/vins#petite-gardette"><span class="mv-b" style="--c:var(--petite)">{{crete_ligne}}<b>10</b><i>ans d’âge</i></span><span>La Petite Gardette</span></a><a class="mv" href="/vins#tradition"><span class="mv-b" style="--c:var(--tradition)">{{crete_ligne}}<b>40</b><i>ans d’âge</i></span><span>Tradition</span></a><a class="mv" href="/vins#ventabren"><span class="mv-b" style="--c:var(--ventabren)">{{crete_ligne}}<b class="long">80–100</b><i>ans d’âge</i></span><span>Ventabren</span></a><a class="mv" href="/vins#rose"><span class="mv-b" style="--c:var(--rose);--t:var(--encre)">{{crete_ligne}}<b>Rosé</b><i>grappes entières</i></span><span>Le rosé</span></a></div>
-          <a class="lien" href="/vins">Toutes les cuvées</a>
+          <div class="sous-bouteilles"><a class="mv" href="{{u_vins}}#petite-gardette"><span class="mv-b" style="--c:var(--petite)">{{crete_ligne}}<b>10</b><i>{{t_ans}}</i></span><span>La Petite Gardette</span></a><a class="mv" href="{{u_vins}}#tradition"><span class="mv-b" style="--c:var(--tradition)">{{crete_ligne}}<b>40</b><i>{{t_ans}}</i></span><span>Tradition</span></a><a class="mv" href="{{u_vins}}#ventabren"><span class="mv-b" style="--c:var(--ventabren)">{{crete_ligne}}<b class="long">80–100</b><i>{{t_ans}}</i></span><span>Ventabren</span></a><a class="mv" href="{{u_vins}}#rose"><span class="mv-b" style="--c:var(--rose);--t:var(--encre)">{{crete_ligne}}<b>Rosé</b><i>{{t_grappes}}</i></span><span>{{t_rose}}</span></a></div>
+          <a class="lien" href="{{u_vins}}">{{t_toutes}}</a>
         </div>
       </div>
     </nav>
-    <a class="logo" href="/" aria-label="Moulin de la Gardette, accueil"><span>Moulin de la</span>Gardette</a>
-    <nav class="nav nav--d" aria-label="Navigation secondaire">
+    {{langue_tete}}
+    <a class="logo" href="{{u_accueil}}" aria-label="{{t_logo}}"><span>Moulin de la</span>Gardette</a>
+    <nav class="nav nav--d" aria-label="{{t_nav_d}}">
       <div class="deroule deroule--d">
-        <a href="/caveau"{{actif_caveau}}>Le caveau<svg class="chevron" width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+        <a href="{{u_caveau}}"{{actif_caveau}}>{{t_caveau}}<svg class="chevron" width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
         <div class="sous">
-          <a href="/caveau#infos">Horaires et accès</a><a href="/caveau#ecrire">Écrire au domaine</a><a href="/caveau#commande">Commander du vin</a><a href="/#lieux">Où trouver nos vins</a>
+          <a href="{{u_caveau}}#{{a_infos}}">{{t_infos}}</a><a href="{{u_caveau}}#{{a_ecrire}}">{{t_ecrire}}</a><a href="{{u_caveau}}#{{a_commande}}">{{t_commander_vin}}</a><a href="{{u_accueil}}#{{a_lieux}}">{{t_lieux}}</a>
         </div>
       </div>
-      <a class="cta" href="/caveau#commande">Commander</a>
+      {{langue_nav}}
+      <a class="cta" href="{{u_caveau}}#{{a_commande}}">{{t_cta}}</a>
     </nav>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="{{t_menu_ouvrir}}"><span></span><span></span></button>
   </header>
 
   <div class="menu" id="menu" hidden>
-    <nav aria-label="Menu">
-      <a href="/">Accueil</a>
-      <div class="menu-groupe"><a href="/domaine"{{actif_domaine}}>Le domaine</a><p class="menu-sous"><a href="/domaine#colline">La colline</a><a href="/domaine#vignoble">Le vignoble</a><a href="/domaine#vendanges">Les vendanges</a><a href="/domaine#cave">La cave</a></p></div>
-      <div class="menu-groupe"><a href="/vins"{{actif_vins}}>Les vins</a><p class="menu-sous"><a href="/vins#petite-gardette">Petite Gardette</a><a href="/vins#tradition">Tradition</a><a href="/vins#ventabren">Ventabren</a><a href="/vins#rose">Rosé</a></p></div>
-      <div class="menu-groupe"><a href="/caveau"{{actif_caveau}}>Le caveau</a><p class="menu-sous"><a href="/caveau#infos">Horaires et accès</a><a href="/caveau#ecrire">Écrire</a><a href="/caveau#commande">Commander</a><a href="/#lieux">Où trouver nos vins</a></p></div>
+    <nav aria-label="{{t_menu}}">
+      <a href="{{u_accueil}}">{{t_accueil}}</a>
+      <div class="menu-groupe"><a href="{{u_domaine}}"{{actif_domaine}}>{{t_domaine}}</a><p class="menu-sous"><a href="{{u_domaine}}#{{a_colline}}">{{t_colline_court}}</a><a href="{{u_domaine}}#{{a_vignoble}}">{{t_vignoble}}</a><a href="{{u_domaine}}#{{a_vendanges}}">{{t_vendanges}}</a><a href="{{u_domaine}}#{{a_cave}}">{{t_cave}}</a></p></div>
+      <div class="menu-groupe"><a href="{{u_vins}}"{{actif_vins}}>{{t_vins}}</a><p class="menu-sous"><a href="{{u_vins}}#petite-gardette">Petite Gardette</a><a href="{{u_vins}}#tradition">Tradition</a><a href="{{u_vins}}#ventabren">Ventabren</a><a href="{{u_vins}}#rose">{{t_rose_court}}</a></p></div>
+      <div class="menu-groupe"><a href="{{u_caveau}}"{{actif_caveau}}>{{t_caveau}}</a><p class="menu-sous"><a href="{{u_caveau}}#{{a_infos}}">{{t_infos}}</a><a href="{{u_caveau}}#{{a_ecrire}}">{{t_ecrire_court}}</a><a href="{{u_caveau}}#{{a_commande}}">{{t_cta}}</a><a href="{{u_accueil}}#{{a_lieux}}">{{t_lieux}}</a></p></div>
     </nav>
     <div class="menu-pied">
-      <a class="btn btn--or" href="/caveau#commande">Commander</a>
-      <p><a href="tel:+33490658151">04 90 65 81 51</a> · 11 place Gabriel-Andéol, Gigondas</p>
+      <a class="btn btn--or" href="{{u_caveau}}#{{a_commande}}">{{t_commander}}</a>
+      <p><a href="tel:+33490658151">{{t_tel}}</a> · {{t_adresse_courte}}</p>
+      {{langue_menu}}
     </div>
   </div>
 
@@ -105,22 +111,22 @@
     <div class="foot-in">
       <div class="foot-marque">
         <p class="logo logo--pied"><span>Moulin de la</span>Gardette</p>
-        <p class="foot-sous">AOC Gigondas · Agriculture biologique<br>Famille Meunier, au pied des Dentelles de Montmirail</p>
+        <p class="foot-sous">{{t_pied_sous}}</p>
       </div>
       <div>
-        <p class="k foot-k">Le caveau</p>
-        <p>11 place Gabriel-Andéol<br>84190 Gigondas</p>
-        <p class="foot-p">Du lundi au samedi<br>10&nbsp;h – 13&nbsp;h, puis 14&nbsp;h 30 – 18&nbsp;h 30 (14&nbsp;h – 18&nbsp;h l’hiver)</p>
+        <p class="k foot-k">{{t_caveau}}</p>
+        <p>{{t_pied_adresse}}</p>
+        <p class="foot-p">{{t_pied_horaires}}</p>
       </div>
       <div>
         <p class="k foot-k">Jean-Baptiste Meunier</p>
-        <p><a href="tel:+33490658151">04 90 65 81 51</a><br><a href="mailto:info@moulindelagardette.com">info@moulindelagardette.com</a></p>
+        <p><a href="tel:+33490658151">{{t_tel}}</a><br><a href="mailto:info@moulindelagardette.com">info@moulindelagardette.com</a></p>
       </div>
-      <nav class="foot-nav" aria-label="Pied de page"><a href="/">Accueil</a><a href="/domaine">Le domaine</a><a href="/vins">Les vins</a><a href="/caveau">Le caveau</a><a href="/caveau#commande">Commander</a><a href="/#lieux">Où trouver nos vins</a><a href="/mentions-legales">Mentions légales</a></nav>
+      <nav class="foot-nav" aria-label="{{t_pied}}"><a href="{{u_accueil}}">{{t_accueil}}</a><a href="{{u_domaine}}">{{t_domaine}}</a><a href="{{u_vins}}">{{t_vins}}</a><a href="{{u_caveau}}">{{t_caveau}}</a><a href="{{u_caveau}}#{{a_commande}}">{{t_commander}}</a><a href="{{u_accueil}}#{{a_lieux}}">{{t_lieux}}</a><a href="{{u_mentions}}">{{t_mentions}}</a></nav>
     </div>
     <div class="foot-bas">
-      <p>L’abus d’alcool est dangereux pour la santé, à consommer avec modération. La vente d’alcool est interdite aux mineurs.</p>
-      <p>© <span data-annee>2026</span> Moulin de la Gardette · Paysages de Gigondas&nbsp;: Wikimedia Commons, <a href="/mentions-legales#photos">crédits</a> · Site réalisé par <a href="https://v2x-studio.fr" rel="noopener">V2X Studio</a></p>
+      <p>{{t_evin}}</p>
+      <p>© <span data-annee>2026</span> Moulin de la Gardette · {{t_credits}}</p>
     </div>
   </footer>
 

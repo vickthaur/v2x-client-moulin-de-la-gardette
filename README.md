@@ -44,10 +44,19 @@ Les cuvées sont présentées par des fiches typographiques (âge des vignes, as
 - Ligne de crête : `_src/crete.py` régénère `_src/crete.txt` (graine fixe).
 - Styles : `assets/css/site.css` (couleurs et polices en variables au début, couleurs des cuvées `--rose`, `--petite`, `--tradition`, `--ventabren`). Titres en Newsreader, texte en Geist (polices hébergées sur le site).
 
+## Version anglaise
+
+- Pages : `_src/pages/en/*.html` → `/en` (`en.html`), `/en/estate`, `/en/wines`, `/en/cellar-door`, `/en/legal-notice` (`en/<slug>.html`, servies grâce à `cleanUrls`). Anglais britannique, vocabulaire des importateurs (estate, plots, whole bunches, native yeasts, unfined and unfiltered, cellar door…) ; noms des cuvées et appellations en français.
+- Gabarit : les textes de `layout.html` passent par `TEXTES` dans `_src/build.py` (avec `CHEMINS` pour les adresses et `ANCRES` pour les ancres, traduites en anglais : `#hill`, `#order`…). Les textes affichés par `site.js` (menu, formulaires, total de la commande) sont dans son petit dictionnaire `T`.
+- Sélecteur de langue « EN » / « FR » avec un petit drapeau (symboles SVG `DRAPEAUX` dans `build.py`) : à côté du bouton principal, en haut à gauche sur mobile et dans le menu. Il mène à la page équivalente, donnée par la clé `"en"` (pages françaises) ou `"fr"` (pages anglaises) des métadonnées, qui sert aussi aux balises `hreflang`.
+- Âge légal : même clé de stockage dans les deux langues, la réponse vaut pour tout le site. Loi Évin : sur les pages anglaises, la mention française officielle (`lang="fr"`) suivie de sa traduction.
+- La 404 reste unique et bilingue. La pastille « Proposition de refonte » reste en français (elle s'adresse au domaine).
+- **Ajouter une page** : créer `_src/pages/<page>.html` et `_src/pages/en/<slug>.html` avec le même en-tête JSON, plus `"en": "/en/<slug>"` côté français et `"langue": "en", "fr": "/<page>"` côté anglais, puis `python3 _src/build.py`. Si la page entre dans la navigation, ajouter son adresse dans `CHEMINS` et ses textes dans `TEXTES`.
+
 ## Avant la mise en ligne réelle
 
 1. Photos du domaine : Jean-Baptiste et Zoé, les vignes de la Gardette, la cave, le caveau, les quatre bouteilles. Copier sur le site les photos Commons gardées (au lieu de les afficher depuis Commons).
-2. Version anglaise (vins vendus au Royaume-Uni et aux États-Unis).
+2. Version anglaise : faite (voir plus haut), à faire relire par Jean-Baptiste ou son importateur.
 3. Prix et millésimes disponibles → éventuellement boutique avec paiement (Stripe).
 4. Formulaires : brancher l'envoi des e-mails vers info@moulindelagardette.com (Resend).
 5. Mentions légales : SIRET.

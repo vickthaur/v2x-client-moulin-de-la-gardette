@@ -4,6 +4,29 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const calme = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Langue de la page : tout texte affiché ou annoncé par ce script existe en français et en anglais */
+  const EN = document.documentElement.lang === 'en';
+  const T = EN ? {
+    menuOuvrir: 'Open menu', menuFermer: 'Close menu',
+    bouteilles: (n) => `${n.toLocaleString('en-GB')} bottle${n === 1 ? '' : 's'}`,
+    cartons: (c, reste) => ` · ${c} case${c > 1 ? 's' : ''}${reste ? ` plus ${reste}` : ''}`,
+    auMoinsUne: 'Please choose at least one bottle.',
+    aCompleter: 'Please fill in the highlighted fields.',
+    merci: 'Thank you', commandeOk: 'Order received', demandeOk: 'Message received',
+    reponse: 'The estate will get back to you shortly to confirm.',
+    maquette: 'This is a mock-up: on the live site, this form will go straight to the estate’s inbox.',
+    nombre: (v, dec) => v.toLocaleString('en-GB', { minimumFractionDigits: dec, maximumFractionDigits: dec }),
+  } : {
+    menuOuvrir: 'Ouvrir le menu', menuFermer: 'Fermer le menu',
+    bouteilles: (n) => `${n} bouteille${n > 1 ? 's' : ''}`,
+    cartons: (c, reste) => ` · ${c} carton${c > 1 ? 's' : ''}${reste ? ` et ${reste}` : ''}`,
+    auMoinsUne: 'Indiquez au moins une bouteille.',
+    aCompleter: 'Merci de compléter les champs indiqués.',
+    merci: 'Merci', commandeOk: 'Commande bien reçue', demandeOk: 'Demande bien reçue',
+    reponse: 'Le domaine vous répond rapidement pour confirmer.',
+    maquette: 'Ceci est une maquette&nbsp;: sur le site en ligne, ce formulaire arrivera directement dans la boîte du domaine.',
+    nombre: (v, dec) => v.toFixed(dec).replace('.', ','),
+  };
   const memo = {
     lire(k) { try { return localStorage.getItem(k); } catch { return null; } },
     ecrire(k, v) { try { localStorage.setItem(k, v); } catch { /* navigation privée */ } },
@@ -24,7 +47,7 @@
     const ouvrir = (o) => {
       menu.hidden = !o;
       burger.setAttribute('aria-expanded', String(o));
-      burger.setAttribute('aria-label', o ? 'Fermer le menu' : 'Ouvrir le menu');
+      burger.setAttribute('aria-label', o ? T.menuFermer : T.menuOuvrir);
       document.body.classList.toggle('menu-ouvert', o);
     };
     burger.addEventListener('click', () => ouvrir(menu.hidden));
@@ -33,7 +56,7 @@
     matchMedia('(min-width: 981px)').addEventListener('change', (e) => { if (e.matches) ouvrir(false); });
   }
 
-  /* Âge légal (Loi Évin) : demandé une fois, gardé dans le navigateur */
+  /* Âge légal (Loi Évin) : demandé une fois, gardé dans le navigateur (même clé pour les deux langues) */
   const age = $('#age');
   if (age && memo.lire('gardette-age') !== 'oui') {
     age.hidden = false;
@@ -80,10 +103,10 @@
       const pas = (t) => {
         const p = Math.min(1, (t - t0) / 1600);
         const v = fin * (1 - Math.pow(1 - p, 3));
-        el.textContent = v.toFixed(dec).replace('.', ',');
+        el.textContent = T.nombre(v, dec);
         if (p < 1) requestAnimationFrame(pas);
       };
-      el.textContent = (0).toFixed(dec).replace('.', ',');
+      el.textContent = T.nombre(0, dec);
       requestAnimationFrame(pas);
     }), { threshold: 0.6 });
     chiffres.forEach((c) => io.observe(c));
@@ -129,7 +152,7 @@
     const recompter = () => {
       const n = champs.reduce((s, i) => s + (Math.max(0, parseInt(i.value, 10)) || 0), 0);
       const cartons = Math.floor(n / 6);
-      total.textContent = `${n} bouteille${n > 1 ? 's' : ''}${cartons ? ` · ${cartons} carton${cartons > 1 ? 's' : ''}${n % 6 ? ` et ${n % 6}` : ''}` : ''}`;
+      total.textContent = T.bouteilles(n) + (cartons ? T.cartons(cartons, n % 6) : '');
       total.classList.remove('bouge');
       void total.offsetWidth;
       total.classList.add('bouge');
@@ -141,7 +164,8 @@
       $('[data-moins]', q).addEventListener('click', () => regler(-1));
       champ.addEventListener('input', recompter);
     });
-    const voulue = new URLSearchParams(location.search).get('cuvee');
+    const qs = new URLSearchParams(location.search);
+    const voulue = qs.get('cuvee') || qs.get('wine');
     const ligne = voulue && $(`.ligne[data-cuvee="${CSS.escape(voulue)}"]`, commande);
     if (ligne) { $('input', ligne).value = 6; ligne.classList.add('choisie'); }
     recompter();
@@ -165,16 +189,16 @@
         if (!ok && !premier) premier = c;
       });
       if (form.id === 'form-commande' && !$$('.quantite input', form).some((i) => parseInt(i.value, 10) > 0)) {
-        etat.textContent = 'Indiquez au moins une bouteille.';
+        etat.textContent = T.auMoinsUne;
         return;
       }
       if (premier) {
-        etat.textContent = 'Merci de compléter les champs indiqués.';
+        etat.textContent = T.aCompleter;
         premier.focus();
         return;
       }
-      const titre = form.id === 'form-commande' ? 'Commande bien reçue' : 'Demande bien reçue';
-      form.innerHTML = `<div class="form-ok"><p class="k">Merci</p><h3>${titre}</h3><p>Le domaine vous répond rapidement pour confirmer.</p><p class="mention">Ceci est une maquette&nbsp;: sur le site en ligne, ce formulaire arrivera directement dans la boîte du domaine.</p></div>`;
+      const titre = form.id === 'form-commande' ? T.commandeOk : T.demandeOk;
+      form.innerHTML = `<div class="form-ok"><p class="k">${T.merci}</p><h3>${titre}</h3><p>${T.reponse}</p><p class="mention">${T.maquette}</p></div>`;
     });
   });
 

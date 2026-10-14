@@ -108,6 +108,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .nav .cta:hover { background: var(--or); border-color: var(--or); color: var(--nuit); }
 .logo { display: grid; justify-items: center; font: 400 28px/.9 var(--serif); letter-spacing: .02em; text-decoration: none; color: inherit; }
 .logo span { font: 500 9.5px/1 var(--sans); letter-spacing: .44em; text-transform: uppercase; color: var(--or); margin: 0 0 7px .44em; }
+/* Sélecteur de langue (EN / FR, petit drapeau) : à côté du bouton principal, dans l'en-tête mobile et dans le menu */
+.langue { display: inline-flex; align-items: center; gap: 6px; font: 500 11.5px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; color: inherit; opacity: .8; transition: opacity .3s; }
+.langue:hover { opacity: 1; }
+.nav a.langue::after { display: none; }
+.drapeau { display: block; flex: none; width: 16px; height: 11px; border-radius: 2px; overflow: hidden; box-shadow: 0 0 0 1px rgb(255 255 255 / .15); }
+.drapeau svg { display: block; width: 100%; height: 100%; }
+.langue--tete { display: none; }
+.menu-pied .langue { justify-self: start; padding-block: 6px; color: var(--ivoire); }
 .burger { display: none; width: 44px; height: 44px; border: 0; background: none; padding: 0; cursor: pointer; position: relative; justify-self: end; }
 .burger span { position: absolute; left: 10px; right: 10px; height: 1px; background: currentColor; transition: transform .4s var(--ease); }
 .burger span:first-child { top: 18px; }
@@ -137,6 +145,7 @@ body.menu-ouvert .top { background: var(--nuit); border-color: var(--trait-c); }
   .nav { display: none; }
   .logo { grid-column: 2; font-size: 25px; }
   .burger { display: block; grid-column: 3; }
+  .langue--tete { display: inline-flex; grid-column: 1; grid-row: 1; justify-self: start; min-height: 44px; }
 }
 
 /* Menus déroulants (ordinateur) */

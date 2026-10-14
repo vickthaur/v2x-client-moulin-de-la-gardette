@@ -1,0 +1,107 @@
+<!--{"titre": "Cellar door, tastings and orders · Moulin de la Gardette, Gigondas", "description": "Visit the Moulin de la Gardette cellar door at 11 place Gabriel-Andéol, Gigondas, for tastings and sales from Monday to Saturday, or order wine for collection or delivery.", "actif": "caveau", "langue": "en", "fr": "/caveau"}-->
+    <section class="entete">
+      <img class="entete-img" {{photo:place-village:leg-entete}} sizes="100vw" alt="The Place des Vignerons in the old centre of Gigondas" width="1920" height="1440" fetchpriority="high" style="object-position:50% 40%">
+      <div class="cadre entete-in">
+        <nav class="ariane" aria-label="Breadcrumb"><a href="/en">Home</a><span aria-hidden="true">/</span><span aria-current="page">Cellar door</span></nav>
+        <h1>Tasting at the cellar door, <em>on the village square</em></h1>
+      </div>
+      <p class="entete-legende" id="leg-entete">The Place des Vignerons, in the old centre of Gigondas</p>
+    </section>
+
+    <nav class="sommaire" aria-label="On this page">
+      <ol class="cadre">
+        <li><a href="#visit">Hours and directions</a></li>
+        <li><a href="#contact">Contact the estate</a></li>
+        <li><a href="#order">Order</a></li>
+      </ol>
+    </nav>
+
+    <section class="sec sec--ivoire" id="visit">
+      <div class="cadre infos">
+        <div class="duo-txt">
+          <p class="k rv">In the heart of the village</p>
+          <p class="adresse rv" style="--d:.06s">11 place Gabriel-Andéol<br>84190 Gigondas, France</p>
+          <div class="coord rv" style="--d:.12s"><a href="tel:+33490658151">+33 4 90 65 81 51</a><a href="mailto:info@moulindelagardette.com">info@moulindelagardette.com</a></div>
+          <dl class="horaires rv" style="--d:.18s">
+            <dt>May to October</dt><dd>Monday to Saturday<br>10am–&#8288;1pm and 2.30pm–&#8288;6.30pm</dd>
+            <dt>November to April</dt><dd>Monday to Saturday<br>10am–&#8288;1pm and 2pm–&#8288;6pm</dd>
+          </dl>
+          <p class="mention rv">Sales and tastings during opening hours. If you are coming as a group, please let the estate know.</p>
+          <div class="actions rv"><a class="btn btn--encre" href="#contact">Contact the estate</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Moulin+de+la+Gardette%2C+11+place+Gabriel-And%C3%A9ol%2C+84190+Gigondas" target="_blank" rel="noopener">Directions</a></div>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <iframe class="carte" title="Map showing the Moulin de la Gardette cellar door in Gigondas" src="https://www.openstreetmap.org/export/embed.html?bbox=4.9986%2C44.1609%2C5.0126%2C44.1679&amp;layer=mapnik&amp;marker=44.1644%2C5.0056" loading="lazy"></iframe>
+          <p class="mention" style="margin-top:10px">Map © OpenStreetMap contributors</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec--nuit-2" id="contact">
+      <div class="cadre duo" style="align-items:start">
+        <div class="duo-txt">
+          <p class="k rv">Contact the estate</p>
+          <h2 class="titre rv" style="--d:.08s">A group visit, <em>a question</em></h2>
+          <div class="texte rv" style="--d:.16s">
+            <p>If you would like to come as a group, ask about a vintage or arrange a large order, write to the estate and Jean-Baptiste will reply to confirm.</p>
+            <p>For a simple tasting, just call in at the cellar door: it is open Monday to Saturday.</p>
+          </div>
+          <div class="coord rv" style="--d:.2s"><a href="tel:+33490658151">+33 4 90 65 81 51</a><a href="mailto:info@moulindelagardette.com">info@moulindelagardette.com</a></div>
+        </div>
+        <form class="form rv" data-demo novalidate>
+          <div class="champs">
+            <div class="champ"><label for="ec-nom">Full name</label><input id="ec-nom" name="nom" autocomplete="name" required></div>
+            <div class="champ"><label for="ec-tel">Phone</label><input id="ec-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
+            <div class="champ champ--large"><label for="ec-email">Email</label><input id="ec-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="champ"><label for="ec-objet">Subject</label>
+              <select id="ec-objet" name="objet"><option>Group visit</option><option>Question about a wine</option><option>Large order</option><option>Trade (wine shop, restaurant)</option><option>Other</option></select>
+            </div>
+            <div class="champ"><label for="ec-date">Date of visit (optional)</label><input id="ec-date" name="date" type="date"></div>
+            <div class="champ champ--large"><label for="ec-msg">Your message</label><textarea id="ec-msg" name="message" rows="4" required></textarea></div>
+          </div>
+          <p class="form-etat" role="status"></p>
+          <div class="actions"><button class="btn btn--or" type="submit">Send</button></div>
+          <p class="mention">Your details are used only to reply to you.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="sec sec--ivoire" id="order">
+      <div class="cadre duo" style="align-items:start">
+        <div class="duo-txt">
+          <p class="k rv">Order</p>
+          <h2 class="titre rv" style="--d:.08s">Sold direct <em>from the estate</em></h2>
+          <div class="texte rv" style="--d:.16s">
+            <p>Choose your cuvées and how many bottles you would like. The estate will confirm the available vintages and the price, then you can collect the wine from the cellar door or have it delivered.</p>
+            <p>Six bottles make a case.</p>
+          </div>
+        </div>
+        <form class="form rv" id="form-commande" data-demo novalidate>
+          <fieldset>
+            <legend class="visuel-cache">Cuvées and quantities</legend>
+            <div class="commande">
+              <div class="ligne" data-cuvee="petite-gardette"><div><b>La Petite Gardette</b><span>Red Gigondas · 10-year-old vines</span></div><div class="quantite"><button type="button" data-moins aria-label="Remove a bottle">−</button><input type="number" name="petite-gardette" min="0" max="120" value="0" inputmode="numeric" aria-label="Bottles of La Petite Gardette"><button type="button" data-plus aria-label="Add a bottle">+</button></div></div>
+              <div class="ligne" data-cuvee="tradition"><div><b>Tradition</b><span>Red Gigondas · 40-year-old vines</span></div><div class="quantite"><button type="button" data-moins aria-label="Remove a bottle">−</button><input type="number" name="tradition" min="0" max="120" value="0" inputmode="numeric" aria-label="Bottles of Tradition"><button type="button" data-plus aria-label="Add a bottle">+</button></div></div>
+              <div class="ligne" data-cuvee="ventabren"><div><b>Ventabren</b><span>Red Gigondas · vines 80 to 100 years old</span></div><div class="quantite"><button type="button" data-moins aria-label="Remove a bottle">−</button><input type="number" name="ventabren" min="0" max="120" value="0" inputmode="numeric" aria-label="Bottles of Ventabren"><button type="button" data-plus aria-label="Add a bottle">+</button></div></div>
+              <div class="ligne" data-cuvee="rose"><div><b>The rosé</b><span>Whole bunches</span></div><div class="quantite"><button type="button" data-moins aria-label="Remove a bottle">−</button><input type="number" name="rose" min="0" max="120" value="0" inputmode="numeric" aria-label="Bottles of rosé"><button type="button" data-plus aria-label="Add a bottle">+</button></div></div>
+            </div>
+            <p class="total"><span>Total</span><b data-total aria-live="polite">0 bottles</b></p>
+          </fieldset>
+          <fieldset class="champ">
+            <legend>Collection or delivery</legend>
+            <div class="choix">
+              <label><input type="radio" name="mode" value="retrait" checked><span>At the cellar door</span></label>
+              <label><input type="radio" name="mode" value="livraison"><span>Delivery</span></label>
+            </div>
+          </fieldset>
+          <div class="champs">
+            <div class="champ"><label for="cd-nom">Full name</label><input id="cd-nom" name="nom" autocomplete="name" required></div>
+            <div class="champ"><label for="cd-tel">Phone</label><input id="cd-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required></div>
+            <div class="champ champ--large"><label for="cd-email">Email</label><input id="cd-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="champ champ--large" data-livraison hidden><label for="cd-adresse">Delivery address</label><textarea id="cd-adresse" name="adresse" rows="3" autocomplete="street-address"></textarea></div>
+          </div>
+          <p class="form-etat" role="status"></p>
+          <div class="actions"><button class="btn btn--encre" type="submit">Send order</button></div>
+          <p class="mention">Nothing is charged online: the estate confirms your order and the price before you pay. The sale of alcohol to minors is prohibited.</p>
+        </form>
+      </div>
+    </section>

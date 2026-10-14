@@ -1,0 +1,107 @@
+<!--{"titre": "Le caveau · Moulin de la Gardette, Gigondas", "description": "Caveau du Moulin de la Gardette, 11 place Gabriel-Andéol à Gigondas : ventes et dégustations du lundi au samedi, commande en retrait ou en livraison.", "actif": "caveau"}-->
+    <section class="entete">
+      <img class="entete-img" {{photo:place-village:leg-entete}} sizes="100vw" alt="La place des vignerons, au cœur du vieux Gigondas" width="1920" height="1440" fetchpriority="high" style="object-position:50% 40%">
+      <div class="cadre entete-in">
+        <nav class="ariane" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Le caveau</span></nav>
+        <h1>Goûter au caveau, <em>sur la place du village</em></h1>
+      </div>
+      <p class="entete-legende" id="leg-entete">La place des vignerons, au cœur du vieux Gigondas</p>
+    </section>
+
+    <nav class="sommaire" aria-label="Sur cette page">
+      <ol class="cadre">
+        <li><a href="#infos">Horaires et accès</a></li>
+        <li><a href="#ecrire">Écrire au domaine</a></li>
+        <li><a href="#commande">Commander</a></li>
+      </ol>
+    </nav>
+
+    <section class="sec sec--ivoire" id="infos">
+      <div class="cadre infos">
+        <div class="duo-txt">
+          <p class="k rv">Au cœur du village</p>
+          <p class="adresse rv" style="--d:.06s">11 place Gabriel-Andéol<br>84190 Gigondas</p>
+          <div class="coord rv" style="--d:.12s"><a href="tel:+33490658151">04 90 65 81 51</a><a href="mailto:info@moulindelagardette.com">info@moulindelagardette.com</a></div>
+          <dl class="horaires rv" style="--d:.18s">
+            <dt>Mai à octobre</dt><dd>Du lundi au samedi<br>10&nbsp;h – 13&nbsp;h et 14&nbsp;h&nbsp;30 – 18&nbsp;h&nbsp;30</dd>
+            <dt>Novembre à avril</dt><dd>Du lundi au samedi<br>10&nbsp;h – 13&nbsp;h et 14&nbsp;h – 18&nbsp;h</dd>
+          </dl>
+          <p class="mention rv">Ventes et dégustations aux heures d’ouverture. Pour un groupe, prévenez le domaine.</p>
+          <div class="actions rv"><a class="btn btn--encre" href="#ecrire">Écrire au domaine</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Moulin+de+la+Gardette%2C+11+place+Gabriel-And%C3%A9ol%2C+84190+Gigondas" target="_blank" rel="noopener">Itinéraire</a></div>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <iframe class="carte" title="Plan d’accès au caveau du Moulin de la Gardette, à Gigondas" src="https://www.openstreetmap.org/export/embed.html?bbox=4.9986%2C44.1609%2C5.0126%2C44.1679&amp;layer=mapnik&amp;marker=44.1644%2C5.0056" loading="lazy"></iframe>
+          <p class="mention" style="margin-top:10px">Carte © les contributeurs d’OpenStreetMap</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec--nuit-2" id="ecrire">
+      <div class="cadre duo" style="align-items:start">
+        <div class="duo-txt">
+          <p class="k rv">Écrire au domaine</p>
+          <h2 class="titre rv" style="--d:.08s">Une visite à plusieurs, <em>une question</em></h2>
+          <div class="texte rv" style="--d:.16s">
+            <p>Pour venir en groupe, poser une question sur un millésime ou préparer une commande importante, écrivez au domaine&nbsp;: Jean-Baptiste vous répond pour confirmer.</p>
+            <p>Pour une simple dégustation, passez au caveau&nbsp;: il est ouvert du lundi au samedi.</p>
+          </div>
+          <div class="coord rv" style="--d:.2s"><a href="tel:+33490658151">04 90 65 81 51</a><a href="mailto:info@moulindelagardette.com">info@moulindelagardette.com</a></div>
+        </div>
+        <form class="form rv" data-demo novalidate>
+          <div class="champs">
+            <div class="champ"><label for="ec-nom">Prénom et nom</label><input id="ec-nom" name="nom" autocomplete="name" required></div>
+            <div class="champ"><label for="ec-tel">Téléphone</label><input id="ec-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
+            <div class="champ champ--large"><label for="ec-email">E-mail</label><input id="ec-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="champ"><label for="ec-objet">Objet</label>
+              <select id="ec-objet" name="objet"><option>Visite en groupe</option><option>Question sur un vin</option><option>Commande importante</option><option>Professionnel (caviste, restaurant)</option><option>Autre</option></select>
+            </div>
+            <div class="champ"><label for="ec-date">Date de visite (facultatif)</label><input id="ec-date" name="date" type="date"></div>
+            <div class="champ champ--large"><label for="ec-msg">Votre message</label><textarea id="ec-msg" name="message" rows="4" required></textarea></div>
+          </div>
+          <p class="form-etat" role="status"></p>
+          <div class="actions"><button class="btn btn--or" type="submit">Envoyer</button></div>
+          <p class="mention">Vos coordonnées servent uniquement à vous répondre.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="sec sec--ivoire" id="commande">
+      <div class="cadre duo" style="align-items:start">
+        <div class="duo-txt">
+          <p class="k rv">Commander</p>
+          <h2 class="titre rv" style="--d:.08s">Le vin part du domaine, <em>en direct</em></h2>
+          <div class="texte rv" style="--d:.16s">
+            <p>Indiquez les cuvées et les quantités. Le domaine vous confirme les millésimes disponibles et le prix, puis vous passez au caveau ou vous vous faites livrer.</p>
+            <p>Par six bouteilles, c’est un carton.</p>
+          </div>
+        </div>
+        <form class="form rv" id="form-commande" data-demo novalidate>
+          <fieldset>
+            <legend class="visuel-cache">Cuvées et quantités</legend>
+            <div class="commande">
+              <div class="ligne" data-cuvee="petite-gardette"><div><b>La Petite Gardette</b><span>Gigondas rouge · vignes de 10 ans</span></div><div class="quantite"><button type="button" data-moins aria-label="Une bouteille de moins">−</button><input type="number" name="petite-gardette" min="0" max="120" value="0" inputmode="numeric" aria-label="Bouteilles de Petite Gardette"><button type="button" data-plus aria-label="Une bouteille de plus">+</button></div></div>
+              <div class="ligne" data-cuvee="tradition"><div><b>Tradition</b><span>Gigondas rouge · vignes de 40 ans</span></div><div class="quantite"><button type="button" data-moins aria-label="Une bouteille de moins">−</button><input type="number" name="tradition" min="0" max="120" value="0" inputmode="numeric" aria-label="Bouteilles de Tradition"><button type="button" data-plus aria-label="Une bouteille de plus">+</button></div></div>
+              <div class="ligne" data-cuvee="ventabren"><div><b>Ventabren</b><span>Gigondas rouge · vignes de 80 à 100 ans</span></div><div class="quantite"><button type="button" data-moins aria-label="Une bouteille de moins">−</button><input type="number" name="ventabren" min="0" max="120" value="0" inputmode="numeric" aria-label="Bouteilles de Ventabren"><button type="button" data-plus aria-label="Une bouteille de plus">+</button></div></div>
+              <div class="ligne" data-cuvee="rose"><div><b>Le rosé</b><span>Grappes entières</span></div><div class="quantite"><button type="button" data-moins aria-label="Une bouteille de moins">−</button><input type="number" name="rose" min="0" max="120" value="0" inputmode="numeric" aria-label="Bouteilles de rosé"><button type="button" data-plus aria-label="Une bouteille de plus">+</button></div></div>
+            </div>
+            <p class="total"><span>Total</span><b data-total aria-live="polite">0 bouteille</b></p>
+          </fieldset>
+          <fieldset class="champ">
+            <legend>Retrait ou livraison</legend>
+            <div class="choix">
+              <label><input type="radio" name="mode" value="retrait" checked><span>Au caveau</span></label>
+              <label><input type="radio" name="mode" value="livraison"><span>Livraison</span></label>
+            </div>
+          </fieldset>
+          <div class="champs">
+            <div class="champ"><label for="cd-nom">Prénom et nom</label><input id="cd-nom" name="nom" autocomplete="name" required></div>
+            <div class="champ"><label for="cd-tel">Téléphone</label><input id="cd-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required></div>
+            <div class="champ champ--large"><label for="cd-email">E-mail</label><input id="cd-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="champ champ--large" data-livraison hidden><label for="cd-adresse">Adresse de livraison</label><textarea id="cd-adresse" name="adresse" rows="3" autocomplete="street-address"></textarea></div>
+          </div>
+          <p class="form-etat" role="status"></p>
+          <div class="actions"><button class="btn btn--encre" type="submit">Envoyer la commande</button></div>
+          <p class="mention">Rien n’est débité en ligne&nbsp;: le domaine confirme la commande et le prix avant tout règlement. La vente d’alcool est interdite aux mineurs.</p>
+        </form>
+      </div>
+    </section>
